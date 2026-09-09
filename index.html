@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Дитячий садочок «Сонечко» | kindergarten.com.ua</title>
+    <title>Дитячий садок «М» | Заклад дошкільної освіти, м. Харків</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Nunito:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -11,6 +11,11 @@
     <style>
       :root {
         --primary: #ff7b54;
+        --primary-ink: #b34700;
+        --muted: #5a6b7a;
+        --surface: #ffffff;
+        --border: #f0e6da;
+        --focus: #1b5fa8;
         --secondary: #ffb26b;
         --accent: #ffd966;
         --bg: #f9f871;
@@ -52,7 +57,7 @@
       .logo {
         font-size: 1.5rem;
         font-weight: 700;
-        color: var(--primary);
+        color: var(--primary-ink);
         text-decoration: none;
       }
 
@@ -65,7 +70,7 @@
       }
 
       nav a:hover {
-        color: var(--primary);
+        color: var(--primary-ink);
       }
 
       .hero {
@@ -78,7 +83,7 @@
 
       .hero h1 {
         font-size: 2.8rem;
-        color: var(--primary);
+        color: var(--primary-ink);
         margin-bottom: 20px;
       }
 
@@ -90,7 +95,7 @@
 
       .btn {
         display: inline-block;
-        background-color: var(--primary);
+        background-color: var(--primary-ink);
         color: white;
         padding: 12px 30px;
         border-radius: 30px;
@@ -102,7 +107,7 @@
       }
 
       .btn:hover {
-        background-color: #e66943;
+        background-color: #8f3800;
         transform: translateY(-2px);
       }
 
@@ -115,7 +120,7 @@
       .section-title {
         text-align: center;
         font-size: 2rem;
-        color: var(--primary);
+        color: var(--primary-ink);
         margin-bottom: 40px;
       }
 
@@ -184,31 +189,563 @@
         margin-top: 40px;
       }
 
+
+      .doc-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .doc-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-decoration: none;
+        color: var(--text);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .doc-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .doc-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+
+      .doc-card strong {
+        display: block;
+        font-weight: 700;
+      }
+
+      .doc-card span {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .info-table th,
+      .info-table td {
+        text-align: left;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+
+      .info-table tr:last-child th,
+      .info-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .info-table th {
+        width: 38%;
+        font-weight: 700;
+        color: var(--primary-ink);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      .viewer[hidden] {
+        display: none;
+      }
+
+      .viewer {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(44, 62, 80, 0.75);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .viewer-panel {
+        background: var(--light-bg);
+        width: 100%;
+        max-width: 1000px;
+        height: 100%;
+        max-height: 900px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .viewer-head {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: white;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .viewer-title {
+        flex: 1;
+        font-family: "Comfortaa", cursive;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .viewer-head a,
+      .viewer-close {
+        font-family: "Nunito", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary-ink);
+        background: none;
+        border: 0;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 12px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      .viewer-head a:hover,
+      .viewer-close:hover {
+        background: #fff3e0;
+      }
+
+      .viewer-body {
+        flex: 1;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .viewer-body iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .viewer-status {
+        padding: 40px 20px;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .docx-host {
+        padding: 20px 10px;
+      }
+
+      .docx-host .docx-wrapper {
+        background: transparent;
+        padding: 0;
+      }
+
+      .docx-host .docx {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -120%);
+        z-index: 300;
+        background: var(--primary-ink);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 0 0 15px 15px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+
+      .skip-link:focus {
+        transform: translate(-50%, 0);
+      }
+
+      .a11y {
+        position: relative;
+      }
+
+      .a11y-toggle {
+        font-family: "Nunito", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary-ink);
+        background: none;
+        border: 2px solid var(--border);
+        border-radius: 30px;
+        padding: 8px 15px;
+        min-height: 44px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+
+      .a11y-toggle:hover {
+        background: #fff3e0;
+      }
+
+      .a11y-panel {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 10px);
+        width: 260px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        padding: 20px;
+      }
+
+      .a11y-panel[hidden] {
+        display: none;
+      }
+
+      .a11y-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .a11y-head h2 {
+        flex: 1;
+        font-size: 1rem;
+      }
+
+      .a11y-help {
+        font-family: "Nunito", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-ink);
+        background: var(--light-bg);
+        border: 2px solid var(--border);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+        cursor: pointer;
+        line-height: 1;
+      }
+
+      .a11y-help:hover {
+        background: #fff3e0;
+      }
+
+      .viewer-panel-auto {
+        height: auto;
+        max-height: 90vh;
+      }
+
+      .help-text {
+        padding: 25px;
+      }
+
+      .help-text h3 {
+        font-size: 1.05rem;
+        color: var(--primary-ink);
+        margin-bottom: 8px;
+      }
+
+      .help-text h3:not(:first-child) {
+        margin-top: 25px;
+      }
+
+      .help-text ol,
+      .help-text ul {
+        padding-left: 22px;
+      }
+
+      .help-text li {
+        margin-bottom: 6px;
+      }
+
+      .help-text kbd {
+        font-family: inherit;
+        font-weight: 700;
+        background: var(--light-bg);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1px 6px;
+        white-space: nowrap;
+      }
+
+      .help-note {
+        margin-top: 25px;
+        padding: 15px;
+        border: 2px solid var(--border);
+        border-radius: 15px;
+      }
+
+      .a11y-group {
+        margin-bottom: 15px;
+      }
+
+      .a11y-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .a11y-group > span {
+        display: block;
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .a11y-buttons {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .a11y-buttons button {
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text);
+        background: var(--light-bg);
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        padding: 10px 14px;
+        min-height: 44px;
+        min-width: 44px;
+        cursor: pointer;
+      }
+
+      .a11y-buttons button[aria-pressed="true"] {
+        background: var(--primary-ink);
+        border-color: var(--primary-ink);
+        color: white;
+      }
+
+      html[data-fontsize="lg"] {
+        font-size: 118%;
+      }
+
+      html[data-fontsize="xl"] {
+        font-size: 138%;
+      }
+
+      html[data-contrast="high"] {
+        --primary: #ffe600;
+        --primary-ink: #ffe600;
+        --muted: #ffffff;
+        --surface: #000000;
+        --border: #ffffff;
+        --focus: #ffe600;
+        --text: #ffffff;
+        --light-bg: #000000;
+      }
+
+      html[data-contrast="high"] body,
+      html[data-contrast="high"] header,
+      html[data-contrast="high"] .hero,
+      html[data-contrast="high"] .card,
+      html[data-contrast="high"] .doc-card,
+      html[data-contrast="high"] .director-card,
+      html[data-contrast="high"] .contact-container,
+      html[data-contrast="high"] .info-table,
+      html[data-contrast="high"] .a11y-panel,
+      html[data-contrast="high"] .viewer-panel,
+      html[data-contrast="high"] .viewer-head,
+      html[data-contrast="high"] .viewer-body,
+      html[data-contrast="high"] footer {
+        background: #000000;
+        color: #ffffff;
+        box-shadow: none;
+      }
+
+      html[data-contrast="high"] .card,
+      html[data-contrast="high"] .doc-card,
+      html[data-contrast="high"] .director-card,
+      html[data-contrast="high"] .contact-container,
+      html[data-contrast="high"] .info-table,
+      html[data-contrast="high"] .viewer-panel {
+        border: 2px solid #ffffff;
+      }
+
+      html[data-contrast="high"] .btn,
+      html[data-contrast="high"] .skip-link,
+      html[data-contrast="high"] .a11y-buttons button[aria-pressed="true"] {
+        background: #ffe600;
+        color: #000000;
+        border-color: #ffe600;
+      }
+
+      html[data-contrast="high"] .a11y-help,
+      html[data-contrast="high"] .help-text kbd,
+      html[data-contrast="high"] .help-note {
+        background: #000000;
+        color: #ffffff;
+        border-color: #ffffff;
+      }
+
+      html[data-contrast="high"] .a11y-help {
+        color: #ffe600;
+      }
+
+      html[data-contrast="high"] .a11y-toggle:hover,
+      html[data-contrast="high"] .a11y-help:hover,
+      html[data-contrast="high"] .viewer-head a:hover,
+      html[data-contrast="high"] .viewer-close:hover,
+      html[data-contrast="high"] nav a:hover {
+        background: #ffe600;
+        color: #000000;
+      }
+
+      html[data-contrast="high"] .btn:hover {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      html[data-contrast="high"] .director-img {
+        background: #000000;
+        border: 2px solid #ffffff;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2rem;
         }
+        .info-table th,
+        .info-table td {
+          display: block;
+          width: auto;
+        }
+        .info-table th {
+          padding-bottom: 0;
+          border-bottom: 0;
+        }
+        .viewer {
+          padding: 0;
+        }
+        .viewer-panel {
+          border-radius: 0;
+          max-height: none;
+        }
+        .viewer-title {
+          font-size: 0.9rem;
+        }
+        header {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
         nav {
-          display: none;
+          order: 3;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px 15px;
+        }
+        nav a {
+          margin-left: 0;
+          padding: 10px 0;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+        }
+        .a11y-toggle {
+          margin-left: 0;
+        }
+        .a11y-panel {
+          width: min(90vw, 260px);
         }
       }
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main">Перейти до основного вмісту</a>
     <header>
-      <a href="#" class="logo">Kindergarten.com.ua</a>
+      <a href="#" class="logo">Дитячий садок «М»</a>
       <nav>
         <a href="#about">Про садочок</a>
+        <a href="#groups">Групи</a>
         <a href="#director">Керівництво</a>
+        <a href="#public-info">Публічна інформація</a>
+        <a href="#documents">Документи</a>
         <a href="#contacts">Контакти</a>
       </nav>
+      <div class="a11y">
+        <button
+          class="a11y-toggle"
+          id="a11y-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="a11y-panel"
+        >
+          👁 Доступність
+        </button>
+        <div class="a11y-panel" id="a11y-panel" hidden>
+          <div class="a11y-head">
+            <h2>Версія для слабозорих</h2>
+            <button
+              class="a11y-help"
+              id="a11y-help"
+              type="button"
+              aria-label="Як увімкнути озвучування тексту на вашому пристрої"
+            >
+              ?
+            </button>
+          </div>
+          <div class="a11y-group">
+            <span id="a11y-size-label">Розмір тексту</span>
+            <div class="a11y-buttons" role="group" aria-labelledby="a11y-size-label">
+              <button type="button" data-fontsize="" aria-pressed="true">A</button>
+              <button type="button" data-fontsize="lg" aria-pressed="false">A+</button>
+              <button type="button" data-fontsize="xl" aria-pressed="false">A++</button>
+            </div>
+          </div>
+          <div class="a11y-group">
+            <span id="a11y-contrast-label">Контрастність</span>
+            <div class="a11y-buttons" role="group" aria-labelledby="a11y-contrast-label">
+              <button type="button" data-contrast="" aria-pressed="true">Звичайна</button>
+              <button type="button" data-contrast="high" aria-pressed="false">
+                Висока
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
+
+    <main id="main">
 
     <section class="hero">
       <h1>Простір щасливого дитинства</h1>
       <p>
-        Сучасний дитячий садочок, де дбають про гармонійний розвиток, безпеку та
-        посмішку кожної дитини.
+        Приватний заклад дошкільної освіти у Харкові. Освітній процес за Базовим
+        компонентом дошкільної освіти, безпечне та інклюзивне середовище,
+        партнерство з батьками.
       </p>
       <a href="#contacts" class="btn">Записатися на екскурсію</a>
     </section>
@@ -217,23 +754,51 @@
       <h2 class="section-title">Про наш садочок</h2>
       <div class="about-grid">
         <div class="card">
-          <h3>🎨 Розвиток</h3>
+          <h3><span aria-hidden="true">🎨</span> Розвиток</h3>
           <p>
-            Творчі заняття, англійська мова, підготовка до школи та логопед.
+            Освітні напрями Базового компонента дошкільної освіти, англійська
+            мова та інші додаткові освітні послуги варіативної складової.
           </p>
         </div>
         <div class="card">
-          <h3>🥗 Власна кухня</h3>
+          <h3><span aria-hidden="true">🤝</span> Інклюзивність</h3>
           <p>
-            Збалансоване 5-разове харчування з урахуванням потреб кожної дитини.
+            Психолого-педагогічний супровід і робота з дітьми з особливими
+            освітніми потребами за потреби родини.
           </p>
         </div>
         <div class="card">
-          <h3>🛡️ Безпека</h3>
+          <h3><span aria-hidden="true">🛡️</span> Безпека</h3>
           <p>
-            Закрита територія під охороною, відеоспостереження та облаштоване
-            укриття.
+            Організація освітнього процесу в умовах воєнного стану відповідно до
+            рішень військової адміністрації та рекомендацій МОН України.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="groups">
+      <h2 class="section-title">Групи</h2>
+      <div class="about-grid">
+        <div class="card">
+          <h3>Бременські музиканти</h3>
+          <p>Молодша група, 3–4 роки</p>
+        </div>
+        <div class="card">
+          <h3>Чарівники</h3>
+          <p>Середня група, 4–5 років</p>
+        </div>
+        <div class="card">
+          <h3>Промінчики</h3>
+          <p>Старша група, 5–6 років</p>
+        </div>
+        <div class="card">
+          <h3>Бджілки</h3>
+          <p>Різновікова група</p>
+        </div>
+        <div class="card">
+          <h3>Матроскин</h3>
+          <p>Різновікова група</p>
         </div>
       </div>
     </section>
@@ -241,20 +806,139 @@
     <section id="director">
       <h2 class="section-title">Керівництво</h2>
       <div class="director-card">
-        <div class="director-img">👩‍🏫</div>
+        <div class="director-img" aria-hidden="true">👩‍🏫</div>
         <div class="director-info">
-          <h3>Ковальчук Олена Петрівна</h3>
+          <h3>Дарина Дмитрівна Шевченко</h3>
           <p
-            style="color: var(--primary); font-weight: 700; margin-bottom: 15px"
+            style="color: var(--primary-ink); font-weight: 700; margin-bottom: 15px"
           >
-            Директор садочка
+            Директор закладу
           </p>
           <p>
-            «Наша мета — створити для дітей другий дім, де панує атмосфера
-            любові, поваги та відкриттів. Ми допомагаємо малюкам розкрити свій
-            потенціал та знайти перших справжніх друзів.»
+            Директор здійснює безпосереднє керівництво закладом, забезпечує
+            виконання Освітньої програми та Статуту, відповідає за створення
+            безпечного освітнього середовища.
           </p>
         </div>
+      </div>
+    </section>
+
+    <section id="public-info">
+      <h2 class="section-title">Публічна інформація</h2>
+      <div class="table-wrap">
+        <table class="info-table">
+          <tr>
+            <th>Повне найменування</th>
+            <td>
+              Товариство з обмеженою відповідальністю «Заклад дошкільної освіти
+              «Дитячий садок «М»
+            </td>
+          </tr>
+          <tr>
+            <th>Тип закладу</th>
+            <td>Приватний заклад дошкільної освіти</td>
+          </tr>
+          <tr>
+            <th>Структура та органи управління</th>
+            <td>
+              Засновники (учасники товариства) — вищий орган управління;
+              директор — Дарина Дмитрівна Шевченко; педагогічна рада — колегіальний
+              орган, що схвалює Освітню програму.
+            </td>
+          </tr>
+          <tr>
+            <th>Ідентифікаційний код юридичної особи</th>
+            <td>39796138</td>
+          </tr>
+          <tr>
+            <th>Місцезнаходження юридичної особи</th>
+            <td>61166, Харківська область, м. Харків, проспект Науки, буд. 19/А</td>
+          </tr>
+          <tr>
+            <th>Місце провадження освітньої діяльності</th>
+            <td>61070, Харківська область, м. Харків, вул. Професорська, буд. 34</td>
+          </tr>
+          <tr>
+            <th>Ліцензія</th>
+            <td>
+              Освітня діяльність за складником системи освіти «дошкільна
+              освіта», рівень освіти — дошкільна освіта. Видана розпорядженням
+              Харківської обласної державної адміністрації від 27 вересня 2021
+              року № 489.
+            </td>
+          </tr>
+          <tr>
+            <th>Мова освітнього процесу</th>
+            <td>
+              Українська (державна). Англійська мова вивчається як додаткова
+              освітня послуга варіативної складової.
+            </td>
+          </tr>
+          <tr>
+            <th>Режим роботи</th>
+            <td>
+              П’ятиденний робочий тиждень, 10 годин на день: 08:00 – 18:00.
+              Вихідні — субота, неділя та святкові дні.
+            </td>
+          </tr>
+          <tr>
+            <th>Навчальний рік</th>
+            <td>З 1 вересня по 31 серпня</td>
+          </tr>
+          <tr>
+            <th>Контингент вихованців</th>
+            <td>5 груп, зокрема дві різновікові</td>
+          </tr>
+          <tr>
+            <th>Результати моніторингу якості освіти</th>
+            <td>
+              Внутрішня система забезпечення якості освіти та план моніторингу
+              визначені Освітньою програмою; оцінювання досягнень дітей —
+              за Положенням про систему оцінювання.
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="documents">
+      <h2 class="section-title">Документи закладу</h2>
+      <div class="doc-list">
+        <a class="doc-card" data-view href="docs/statut-2025.pdf" target="_blank" rel="noopener">
+          <span class="doc-icon" aria-hidden="true">📕</span>
+          <span>
+            <strong>Статут закладу</strong>
+            <span>PDF, 2025</span>
+          </span>
+        </a>
+        <a class="doc-card" data-view href="docs/licenziia-2021.pdf" target="_blank" rel="noopener">
+          <span class="doc-icon" aria-hidden="true">📜</span>
+          <span>
+            <strong>Ліцензія на освітню діяльність</strong>
+            <span>PDF, 2021</span>
+          </span>
+        </a>
+        <a class="doc-card" data-view href="docs/rishennia-uchasnykiv-2025.pdf" target="_blank" rel="noopener">
+          <span class="doc-icon" aria-hidden="true">🗂️</span>
+          <span>
+            <strong>Рішення учасників</strong>
+            <span>PDF, 2025</span>
+          </span>
+        </a>
+        <a class="doc-card" data-view href="docs/osvitnia-prohrama-2025-2026.docx" target="_blank" rel="noopener">
+          <span class="doc-icon" aria-hidden="true">📘</span>
+          <span>
+            <strong>Освітня програма на 2025/2026 н. р.</strong>
+            <span>DOCX</span>
+          </span>
+        </a>
+        <a class="doc-card" data-view href="docs/polozhennia-pro-otsiniuvannia.docx" target="_blank" rel="noopener">
+          <span class="doc-icon" aria-hidden="true">📗</span>
+          <span>
+            <strong>Положення про систему оцінювання</strong>
+            <span>DOCX</span>
+          </span>
+        </a>
       </div>
     </section>
 
@@ -262,14 +946,20 @@
       <h2 class="section-title">Контакти та Адреса</h2>
       <div class="contact-container">
         <div class="contact-info">
-          <p><strong>📍 Адреса:</strong> м. Київ, вул. Дитяча, 12</p>
-          <p><strong>📞 Телефон:</strong> +38 (044) 123-45-67</p>
-          <p><strong>✉️ Email:</strong> info@kindergarten.com.ua</p>
-          <p><strong>⏰ Години роботи:</strong> Пн-Пт: 08:00 – 19:00</p>
+          <p>
+            <strong><span aria-hidden="true">📍</span> Адреса садочка:</strong> 61070, м. Харків, вул.
+            Професорська, 34
+          </p>
+          <p>
+            <strong><span aria-hidden="true">🏢</span> Юридична адреса:</strong> 61166, м. Харків, проспект
+            Науки, 19/А
+          </p>
+          <p><strong><span aria-hidden="true">⏰</span> Години роботи:</strong> Пн-Пт: 08:00 – 18:00</p>
         </div>
         <div>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.523891787834!2d30.5234!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI3JzAwLjQiTiAzMMKwMzEnMjQuMiJF!5e0!3m2!1suk!2sua!4v1600000000000!5m2!1suk!2sua"
+            src="https://maps.google.com/maps?q=%D0%A5%D0%B0%D1%80%D0%BA%D1%96%D0%B2%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%9F%D1%80%D0%BE%D1%84%D0%B5%D1%81%D0%BE%D1%80%D1%81%D1%8C%D0%BA%D0%B0%2C%2034&hl=uk&z=17&output=embed"
+            title="Карта: м. Харків, вул. Професорська, 34"
             width="100%"
             height="200"
             style="border: 0; border-radius: 15px"
@@ -280,9 +970,372 @@
         </div>
       </div>
     </section>
+    </main>
 
     <footer>
+      <p>
+        ТОВ «Заклад дошкільної освіти «Дитячий садок «М» · код ЄДРПОУ 39796138 ·
+        м. Харків, вул. Професорська, 34
+      </p>
       <p>&copy; 2026 kindergarten.com.ua. Усі права захищені.</p>
     </footer>
+
+    <div class="viewer" id="viewer" hidden>
+      <div
+        class="viewer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="viewer-title"
+      >
+        <div class="viewer-head">
+          <span class="viewer-title" id="viewer-title"></span>
+          <a id="viewer-download" href="#" download>Завантажити</a>
+          <button class="viewer-close" type="button" aria-label="Закрити">
+            ✕
+          </button>
+        </div>
+        <div class="viewer-body" id="viewer-body"></div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx-preview@0.3.6/dist/docx-preview.min.js" defer></script>
+    <script>
+      (function () {
+        var viewer = document.getElementById("viewer");
+        var panel = viewer.querySelector(".viewer-panel");
+        var opener = null;
+        var body = document.getElementById("viewer-body");
+        var title = document.getElementById("viewer-title");
+        var download = document.getElementById("viewer-download");
+
+        function close() {
+          viewer.hidden = true;
+          body.innerHTML = "";
+          document.body.style.overflow = "";
+          if (opener) {
+            opener.focus();
+            opener = null;
+          }
+        }
+
+        function focusable() {
+          return panel.querySelectorAll("a[href], button, iframe, [tabindex]");
+        }
+
+        function status(text) {
+          body.innerHTML = '<p class="viewer-status"></p>';
+          body.firstChild.textContent = text;
+        }
+
+        function openPdf(url) {
+          var frame = document.createElement("iframe");
+          frame.src = url + "#view=FitH";
+          frame.title = title.textContent;
+          body.innerHTML = "";
+          body.appendChild(frame);
+        }
+
+        function openDocx(url) {
+          if (!window.docx || !window.JSZip) {
+            status("Не вдалося завантажити переглядач. Скористайтеся кнопкою «Завантажити».");
+            return;
+          }
+          status("Завантаження документа…");
+          fetch(url)
+            .then(function (res) {
+              if (!res.ok) throw new Error(res.status);
+              return res.blob();
+            })
+            .then(function (blob) {
+              var host = document.createElement("div");
+              host.className = "docx-host";
+              body.innerHTML = "";
+              body.appendChild(host);
+              return window.docx.renderAsync(blob, host, null, {
+                inWrapper: true,
+                breakPages: true,
+                ignoreWidth: false,
+              });
+            })
+            .catch(function () {
+              status("Документ не відкрився у браузері. Скористайтеся кнопкою «Завантажити».");
+            });
+        }
+
+        document.querySelectorAll(".doc-card[data-view]").forEach(function (card) {
+          card.addEventListener("click", function (event) {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) {
+              return;
+            }
+            event.preventDefault();
+            var url = card.getAttribute("href");
+            opener = card;
+            title.textContent = card.querySelector("strong").textContent;
+            download.href = url;
+            viewer.hidden = false;
+            document.body.style.overflow = "hidden";
+            viewer.querySelector(".viewer-close").focus();
+            if (/\.docx$/i.test(url)) {
+              openDocx(url);
+            } else {
+              openPdf(url);
+            }
+          });
+        });
+
+        viewer.querySelector(".viewer-close").addEventListener("click", close);
+        viewer.addEventListener("click", function (event) {
+          if (event.target === viewer) close();
+        });
+        document.addEventListener("keydown", function (event) {
+          if (viewer.hidden) return;
+          if (event.key === "Escape") {
+            close();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var items = focusable();
+          if (!items.length) return;
+          var first = items[0];
+          var last = items[items.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("a11y-toggle");
+        var panel = document.getElementById("a11y-panel");
+        var settings = [
+          { key: "fontsize", storage: "a11y-fontsize" },
+          { key: "contrast", storage: "a11y-contrast" },
+        ];
+
+        function apply(setting, value) {
+          if (value) {
+            root.setAttribute("data-" + setting.key, value);
+          } else {
+            root.removeAttribute("data-" + setting.key);
+          }
+          panel
+            .querySelectorAll("[data-" + setting.key + "]")
+            .forEach(function (button) {
+              var own = button.getAttribute("data-" + setting.key);
+              button.setAttribute("aria-pressed", own === value ? "true" : "false");
+            });
+          try {
+            if (value) {
+              localStorage.setItem(setting.storage, value);
+            } else {
+              localStorage.removeItem(setting.storage);
+            }
+          } catch (error) {
+            /* приватний режим — налаштування діють лише до перезавантаження */
+          }
+        }
+
+        settings.forEach(function (setting) {
+          var saved = "";
+          try {
+            saved = localStorage.getItem(setting.storage) || "";
+          } catch (error) {
+            saved = "";
+          }
+          apply(setting, saved);
+          panel
+            .querySelectorAll("[data-" + setting.key + "]")
+            .forEach(function (button) {
+              button.addEventListener("click", function () {
+                apply(setting, button.getAttribute("data-" + setting.key));
+              });
+            });
+        });
+
+        function open(state) {
+          panel.hidden = !state;
+          toggle.setAttribute("aria-expanded", state ? "true" : "false");
+        }
+
+        toggle.addEventListener("click", function () {
+          open(panel.hidden);
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!panel.hidden && !panel.contains(event.target) && event.target !== toggle) {
+            open(false);
+          }
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && !panel.hidden) {
+            open(false);
+            toggle.focus();
+          }
+        });
+      })();
+    </script>
+
+    <div class="viewer" id="help" hidden>
+      <div
+        class="viewer-panel viewer-panel-auto"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="help-title"
+      >
+        <div class="viewer-head">
+          <span class="viewer-title" id="help-title">
+            Як увімкнути озвучування тексту
+          </span>
+          <button class="viewer-close" type="button" aria-label="Закрити">
+            ✕
+          </button>
+        </div>
+        <div class="viewer-body">
+          <div class="help-text">
+            <p>
+              Озвучування сторінки виконує програма читання екрана, яка вже
+              вбудована у ваш телефон або комп’ютер. Її потрібно увімкнути один
+              раз — після цього вона читає будь-який сайт.
+            </p>
+
+            <h3>iPhone або iPad</h3>
+            <ol>
+              <li>
+                «Налаштування» → «Доступність» → «VoiceOver» → увімкнути
+                перемикач.
+              </li>
+              <li>
+                Або скажіть Siri: «Увімкни VoiceOver».
+              </li>
+              <li>
+                Щоб озвучити лише цю сторінку: «Налаштування» → «Доступність» →
+                «Вимовляння вголос» → «Вимовляти екран», далі проведіть двома
+                пальцями від верхнього краю екрана вниз.
+              </li>
+            </ol>
+
+            <h3>Android</h3>
+            <ol>
+              <li>
+                «Налаштування» → «Доступність» → «TalkBack» → увімкнути
+                перемикач.
+              </li>
+              <li>
+                Швидке ввімкнення: натисніть і утримуйте обидві клавіші
+                гучності приблизно 3 секунди.
+              </li>
+              <li>
+                Альтернатива — «Доступність» → «Вибір вголос»: читається лише
+                той текст, який ви позначите.
+              </li>
+            </ol>
+
+            <h3>Windows</h3>
+            <ol>
+              <li>
+                Екранний диктор: натисніть <kbd>Win</kbd> + <kbd>Ctrl</kbd> +
+                <kbd>Enter</kbd> (повторне натискання вимикає).
+              </li>
+              <li>
+                Або «Параметри» → «Спеціальні можливості» → «Екранний диктор».
+              </li>
+              <li>
+                У браузері Microsoft Edge є окрема функція «Читати вголос»:
+                <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd>.
+              </li>
+            </ol>
+
+            <h3>macOS</h3>
+            <ol>
+              <li>
+                VoiceOver: натисніть <kbd>Cmd</kbd> + <kbd>F5</kbd> (повторне
+                натискання вимикає).
+              </li>
+              <li>
+                Або «Системні параметри» → «Доступність» → «VoiceOver».
+              </li>
+            </ol>
+
+            <h3>Збільшити текст у браузері</h3>
+            <ul>
+              <li>
+                Комп’ютер: <kbd>Ctrl</kbd> + <kbd>+</kbd> (на Mac —
+                <kbd>Cmd</kbd> + <kbd>+</kbd>), повернути початковий розмір —
+                <kbd>Ctrl</kbd> + <kbd>0</kbd>.
+              </li>
+              <li>
+                Телефон: розведіть два пальці на екрані або скористайтеся
+                кнопками «A+» у цьому вікні налаштувань.
+              </li>
+            </ul>
+
+            <div class="help-note">
+              <p>
+                Статут, ліцензія та рішення учасників — це відскановані
+                документи (зображення), тому програма читання екрана не може
+                прочитати їх текст. Ми надішлемо зміст будь-якого з цих
+                документів у зручному форматі на запит — зверніться до нас за
+                контактами, вказаними на сайті.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var help = document.getElementById("help");
+        var panel = help.querySelector(".viewer-panel");
+        var closeButton = help.querySelector(".viewer-close");
+        var toggle = document.getElementById("a11y-help");
+
+        function close() {
+          help.hidden = true;
+          document.body.style.overflow = "";
+          toggle.focus();
+        }
+
+        toggle.addEventListener("click", function () {
+          help.hidden = false;
+          document.body.style.overflow = "hidden";
+          closeButton.focus();
+        });
+
+        closeButton.addEventListener("click", close);
+        help.addEventListener("click", function (event) {
+          if (event.target === help) close();
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (help.hidden) return;
+          if (event.key === "Escape") {
+            close();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var items = panel.querySelectorAll("a[href], button, [tabindex]");
+          if (!items.length) return;
+          var first = items[0];
+          var last = items[items.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
