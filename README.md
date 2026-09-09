@@ -1,2 +1,3 @@
 # kindergarten.com.ua
-Static landing page
+
+Простий статичний сайт-візитка дитячого садка українською мовою.
