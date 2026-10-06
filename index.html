@@ -231,6 +231,15 @@
         color: var(--muted);
       }
 
+      .notice {
+        margin-top: 20px;
+        padding: 15px 20px;
+        background: white;
+        border-left: 5px solid var(--primary);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
       .info-table {
         width: 100%;
         border-collapse: collapse;
@@ -568,6 +577,7 @@
       html[data-contrast="high"] .director-card,
       html[data-contrast="high"] .contact-container,
       html[data-contrast="high"] .info-table,
+      html[data-contrast="high"] .notice,
       html[data-contrast="high"] .a11y-panel,
       html[data-contrast="high"] .viewer-panel,
       html[data-contrast="high"] .viewer-head,
@@ -939,7 +949,20 @@
             <span>DOCX</span>
           </span>
         </a>
+        <a class="doc-card" data-view href="docs/polozhennia-pro-videosposterezhennia-2026.pdf" target="_blank" rel="noopener">
+          <span class="doc-icon" aria-hidden="true">📹</span>
+          <span>
+            <strong>Положення про відеоспостереження</strong>
+            <span>PDF, 2026</span>
+          </span>
+        </a>
       </div>
+      <p class="notice">
+        <span aria-hidden="true">📹</span>
+        Задля безпеки дітей та захисту освітнього простору, а також з метою
+        забезпечення безперервності освітнього процесу, на території закладу
+        здійснюється відеоспостереження.
+      </p>
     </section>
 
     <section id="contacts">
